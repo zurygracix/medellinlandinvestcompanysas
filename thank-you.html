@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! · Medellin Investment & Land Development SAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f2ed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .ty-card {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            padding: 60px 50px;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 6px solid #b8860b;
+            position: relative;
+        }
+        .lang-toggle-ty {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 4px;
+            border: 1px solid #ddd;
+            border-radius: 40px;
+            padding: 4px;
+        }
+        .lang-toggle-ty a {
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: transparent;
+            color: #1e2a2f;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .lang-toggle-ty a.active {
+            background: #1e2a2f;
+            color: white;
+        }
+        .lang-toggle-ty a:hover:not(.active) {
+            background: #f0ede7;
+        }
+        .ty-card .icon { font-size: 4.5rem; margin-bottom: 10px; }
+        .ty-card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #1e2a2f;
+            margin-bottom: 12px;
+        }
+        .ty-card h1 span { color: #b8860b; }
+        .ty-card p {
+            color: #4a4f55;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .steps-box {
+            background: #f8f6f1;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: left;
+            margin: 25px 0;
+        }
+        .steps-box h3 { margin-bottom: 10px; color: #1e2a2f; }
+        .steps-box li {
+            list-style: none;
+            padding: 6px 0;
+            border-bottom: 1px solid #e8e5dd;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .steps-box li:last-child { border: none; }
+        .steps-box li::before { content: "✅"; color: #b8860b; font-weight: bold; }
+        .btn-back {
+            display: inline-block;
+            background: #1e2a2f;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .btn-back:hover { background: #b8860b; }
+        .btn-wa { background: #25D366 !important; }
+        .btn-wa:hover { background: #1da851 !important; }
+        .float-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 14px; z-index: 1000; }
+        .float-btn { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: 0.2s; color: white; border: none; cursor: pointer; }
+        .float-btn:hover { transform: scale(1.1); }
+        .float-btn.whatsapp { background: #25D366; }
+        @media (max-width: 600px) {
+            .ty-card { padding: 30px 20px; }
+            .ty-card h1 { font-size: 2rem; }
+            .lang-toggle-ty { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ty-card">
+        <!-- Selector de idioma dentro de la tarjeta -->
+        <div class="lang-toggle-ty">
+            <a id="langEsTy" class="active" onclick="setLanguageTy('es')">ES</a>
+            <a id="langEnTy" onclick="setLanguageTy('en')">EN</a>
+        </div>
+
+        <div class="icon">🏡</div>
+        <h1 data-i18n-ty="title">¡Gracias, <span>Inversionista</span>!</h1>
+        <p data-i18n-ty="desc">Hemos recibido tu solicitud de manera exitosa. Nuestro equipo bilingüe (Español/Inglés) la revisará en las próximas <strong>24 horas hábiles</strong>.</p>
+
+        <div class="steps-box">
+            <h3 data-i18n-ty="steps-title">📋 ¿Qué sigue ahora?</h3>
+            <ul>
+                <li data-i18n-ty="step1"><strong>Paso 1:</strong> Revisaremos tu perfil y requerimientos.</li>
+                <li data-i18n-ty="step2"><strong>Paso 2:</strong> Te contactaremos vía WhatsApp o correo para agendar una asesoría personalizada (sin costo).</li>
+                <li data-i18n-ty="step3"><strong>Paso 3:</strong> Te compartiremos el portafolio de terrenos y proyectos ajustado a tu presupuesto.</li>
+            </ul>
+        </div>
+
+        <p style="font-size:0.95rem; color:#6b7a85;" data-i18n-ty="wa-note">Mientras tanto, si deseas agilizar el proceso, escríbenos directamente por WhatsApp.</p>
+        <a href="https://wa.me/573005551234?text=Hola%20Medellin%20Investment%20%26%20Land%20Development.%20Quiero%20recibir%20informaci%C3%B3n%20sobre%20las%20oportunidades%20en%20Santa%20Elena." class="btn-back btn-wa" data-i18n-ty="wa-btn">💬 Contactar ahora por WhatsApp</a>
+        <br>
+        <a href="index.html" class="btn-back" style="background:#b8860b;" data-i18n-ty="back-btn">← Volver al inicio</a>
+    </div>
+
+    <!-- FLOATING WHATSAPP -->
+    <div class="float-buttons">
+        <a href="https://wa.me/573005551234" class="float-btn whatsapp" target="_blank">💬</a>
+    </div>
+
+    <script>
+        // =============================================
+        // TRADUCCIONES PARA THANK YOU
+        // =============================================
+        const tyTranslations = {
+            es: {
+                'title': '¡Gracias, <span>Inversionista</span>!',
+                'desc': 'Hemos recibido tu solicitud de manera exitosa. Nuestro equipo bilingüe (Español/Inglés) la revisará en las próximas <strong>24 horas hábiles</strong>.',
+                'steps-title': '📋 ¿Qué sigue ahora?',
+                'step1': '<strong>Paso 1:</strong> Revisaremos tu perfil y requerimientos.',
+                'step2': '<strong>Paso 2:</strong> Te contactaremos vía WhatsApp o correo para agendar una asesoría personalizada (sin costo).',
+                'step3': '<strong>Paso 3:</strong> Te compartiremos el portafolio de terrenos y proyectos ajustado a tu presupuesto.',
+                'wa-note': 'Mientras tanto, si deseas agilizar el proceso, escríbenos directamente por WhatsApp.',
+                'wa-btn': '💬 Contactar ahora por WhatsApp',
+                'back-btn': '← Volver al inicio'
+            },
+            en: {
+                'title': 'Thank you, <span>Investor</span>!',
+                'desc': 'We have successfully received your request. Our bilingual team (Spanish/English) will review it within the next <strong>24 business hours</strong>.',
+                'steps-title': '📋 What\'s next?',
+                'step1': '<strong>Step 1:</strong> We will review your profile and requirements.',
+                'step2': '<strong>Step 2:</strong> We will contact you via WhatsApp or email to schedule a personalized consultation (free of charge).',
+                'step3': '<strong>Step 3:</strong> We will share the portfolio of land and projects tailored to your budget.',
+                'wa-note': 'In the meantime, if you want to speed up the process, message us directly on WhatsApp.',
+                'wa-btn': '💬 Contact now via WhatsApp',
+                'back-btn': '← Back to home'
+            }
+        };
+
+        function setLanguageTy(lang) {
+            if (!tyTranslations[lang]) return;
+            document.getElementById('langEsTy').classList.toggle('active', lang === 'es');
+            document.getElementById('langEnTy').classList.toggle('active', lang === 'en');
+            document.querySelectorAll('[data-i18n-ty]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ty');
+                if (tyTranslations[lang][key] !== undefined) {
+                    const newText = tyTranslations[lang][key];
+                    if (newText.includes('<') && newText.includes('>')) {
+                        el.innerHTML = newText;
+                    } else {
+                        el.textContent = newText;
+                    }
+                }
+            });
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+        }
+
+        // Cargar idioma guardado al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('lang') || 'es';
+            setLanguageTy(savedLang);
+        });
+    </script>
+
+</body>
+</html>

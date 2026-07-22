@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inversión y desarrollo inmobiliario en Santa Elena, Antioquia. Estructuración, adquisición y ejecución integral de proyectos con acompañamiento bilingüe.">
+  <meta name="theme-color" content="#0b1714">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Medellin Investment & Land Development SAS">
+  <meta property="og:description" content="Capital con raíces. Valor que trasciende en Santa Elena, Antioquia.">
+  <meta property="og:image" content="assets/og.png">
+  <title>Medellin Investment & Land Development SAS · Santa Elena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b1714;
+      --forest: #11231d;
+      --forest-2: #19332a;
+      --paper: #f3f0e9;
+      --white: #fffdf8;
+      --sage: #9aaa99;
+      --copper: #c69b63;
+      --line: rgba(17, 35, 29, .16);
+      --muted: #5c6862;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(8, 19, 15, .14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    img { max-width: 100%; display: block; }
+    section { scroll-margin-top: 90px; }
+    .container { width: min(1240px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--copper);
+      font: 600 .72rem/1 "DM Sans", sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 1px; background: currentColor; }
+    .section-head { display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 40px; margin-bottom: 52px; }
+    .section-title {
+      font: 500 clamp(2.6rem, 5vw, 5rem)/.98 "Playfair Display", serif;
+      letter-spacing: -.04em;
+      max-width: 850px;
+      margin-top: 18px;
+    }
+    .section-title em { color: var(--copper); font-weight: 500; }
+    .section-copy { color: var(--muted); max-width: 540px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .pill-light { background: rgba(255,255,255,.12); color: white; backdrop-filter: blur(10px); }
+    .pill-copper { background: #eadbc7; color: #5d3d1f; }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      color: white;
+      background: linear-gradient(to bottom, rgba(5, 13, 10, .72), transparent);
+      transition: background .25s, backdrop-filter .25s;
+    }
+    .nav.scrolled { background: rgba(11, 23, 20, .92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .nav-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; display: inline-flex; align-items: center; gap: 13px; }
+    .brand-mark {
+      width: 42px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.5);
+      display: grid; place-items: center; border-radius: 50%;
+      font: 500 1.05rem/1 "Playfair Display", serif; color: var(--copper);
+    }
+    .brand-copy { display: grid; line-height: 1.05; }
+    .brand-copy strong { font: 500 1rem/1.1 "Playfair Display", serif; letter-spacing: .02em; }
+    .brand-copy small { margin-top: 5px; font-size: .53rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links > a { text-decoration: none; font-size: .82rem; font-weight: 500; opacity: .9; }
+    .nav-links > a:hover { color: #ebc899; }
+    .lang { display: flex; align-items: center; padding: 3px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; }
+    .lang button { color: white; background: transparent; border: 0; border-radius: 999px; padding: 6px 9px; cursor: pointer; font-size: .66rem; }
+    .lang button.active { background: white; color: var(--ink); }
+    .nav-cta { border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 10px 17px; }
+    .menu-btn { display: none; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.4); background: transparent; color: white; border-radius: 50%; cursor: pointer; }
+
+    /* Hero */
+    .hero {
+      min-height: 94vh;
+      color: white;
+      position: relative;
+      display: grid;
+      align-items: end;
+      background-image:
+        linear-gradient(90deg, rgba(4, 13, 9, .9) 0%, rgba(4, 13, 9, .58) 43%, rgba(4, 13, 9, .12) 77%),
+        linear-gradient(0deg, rgba(4, 13, 9, .76), transparent 45%),
+        url("assets/hero-santa-elena.webp");
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 1px; background: rgba(255,255,255,.22); }
+    .hero-content { position: relative; z-index: 1; padding: 150px 0 70px; }
+    .hero h1 {
+      max-width: 830px;
+      margin: 24px 0;
+      font: 500 clamp(3.7rem, 7.4vw, 7.4rem)/.9 "Playfair Display", serif;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+    .hero h1 em { color: #e3b77d; font-weight: 500; }
+    .hero-lead { max-width: 640px; color: rgba(255,255,255,.77); font-size: clamp(1rem, 1.4vw, 1.18rem); }
+    .hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .2s, background .2s, color .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--copper); color: #1b140b; }
+    .btn-primary:hover { background: #e0b77e; }
+    .btn-ghost { color: white; border-color: rgba(255,255,255,.46); backdrop-filter: blur(8px); }
+    .btn-ghost:hover { background: white; color: var(--ink); }
+    .hero-meta {
+      position: absolute;
+      z-index: 2;
+      right: max(24px, calc((100vw - 1240px)/2));
+      bottom: 66px;
+      display: grid;
+      gap: 9px;
+      text-align: right;
+    }
+    .hero-meta small { opacity: .62; text-transform: uppercase; letter-spacing: .13em; font-size: .63rem; }
+    .hero-meta strong { font: 500 1.25rem "Playfair Display", serif; }
+
+    .signal-bar { background: var(--forest); color: white; }
+    .signals { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); min-height: 118px; }
+    .signal { padding: 26px 30px; display: grid; align-content: center; border-left: 1px solid rgba(255,255,255,.12); }
+    .signal:first-child { border-left: 0; padding-left: 0; }
+    .signal small { text-transform: uppercase; letter-spacing: .12em; font-size: .62rem; color: var(--sage); }
+    .signal strong { margin-top: 6px; font: 500 1.05rem "Playfair Display", serif; }
+
+    /* Opportunities */
+    .opportunities { padding: 120px 0; }
+    .demo-note {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+      color: #725232; background: #eadfce; padding: 8px 12px; border-radius: 999px; font-size: .75rem;
+    }
+    .projects { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
+    .project-card {
+      grid-column: span 4;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--forest);
+      color: white;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .project-card:nth-child(2) { margin-top: 50px; }
+    .project-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s ease; }
+    .project-card:hover img { transform: scale(1.04); }
+    .project-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(5,15,11,.97), rgba(5,15,11,.08) 68%); }
+    .project-top { position: absolute; inset: 22px 22px auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .project-number { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: rgba(9,20,16,.55); backdrop-filter: blur(12px); font-size: .72rem; }
+    .project-body { position: absolute; inset: auto 26px 26px; }
+    .project-location { color: #e2bd8c; text-transform: uppercase; letter-spacing: .12em; font-size: .65rem; }
+    .project-card h3 { margin: 8px 0 12px; font: 500 2.25rem/1 "Playfair Display", serif; }
+    .project-card p { color: rgba(255,255,255,.7); font-size: .84rem; }
+    .project-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 20px 0; margin-top: 18px; border-top: 1px solid rgba(255,255,255,.2); }
+    .project-stats span { display: grid; gap: 2px; }
+    .project-stats strong { font: 500 1rem "Playfair Display", serif; }
+    .project-stats small { color: rgba(255,255,255,.5); font-size: .58rem; text-transform: uppercase; letter-spacing: .08em; }
+    .project-link { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: white; border: 0; padding: 0; cursor: pointer; font-size: .79rem; font-weight: 600; }
+    .project-link::after { content: "↗"; color: var(--copper); font-size: 1.1rem; }
+
+    /* Thesis */
+    .thesis { background: var(--ink); color: white; padding: 120px 0; position: relative; overflow: hidden; }
+    .thesis::before { content: "SANTA ELENA"; position: absolute; right: -2vw; top: 5%; font: 500 11vw/1 "Playfair Display", serif; color: rgba(255,255,255,.025); white-space: nowrap; }
+    .thesis .section-copy { color: rgba(255,255,255,.58); }
+    .thesis-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 90px; align-items: start; }
+    .thesis-quote { font: 500 clamp(2.5rem, 4.5vw, 4.8rem)/1.02 "Playfair Display", serif; letter-spacing: -.035em; }
+    .thesis-quote em { color: var(--copper); }
+    .thesis-points { border-top: 1px solid rgba(255,255,255,.18); }
+    .thesis-point { display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+    .thesis-point b { color: var(--copper); font: 500 1.15rem "Playfair Display", serif; }
+    .thesis-point h3 { font: 500 1.25rem "Playfair Display", serif; margin-bottom: 5px; }
+    .thesis-point p { color: rgba(255,255,255,.58); font-size: .86rem; }
+
+    /* Process */
+    .process { padding: 120px 0; background: var(--white); }
+    .process-list { border-top: 1px solid var(--line); }
+    .process-step { display: grid; grid-template-columns: 90px .7fr 1.1fr; gap: 34px; align-items: start; padding: 35px 0; border-bottom: 1px solid var(--line); }
+    .process-num { color: var(--copper); font: 500 1.1rem "Playfair Display", serif; }
+    .process-step h3 { font: 500 1.55rem/1.15 "Playfair Display", serif; }
+    .process-step p { color: var(--muted); font-size: .91rem; max-width: 650px; }
+
+    /* Trust */
+    .trust { padding: 110px 0; }
+    .trust-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
+    .trust-panel { padding: 46px; border-radius: var(--radius); background: #ded8ca; position: relative; overflow: hidden; }
+    .trust-panel::after { content: ""; width: 220px; height: 220px; border: 1px solid rgba(17,35,29,.18); border-radius: 50%; position: absolute; right: -70px; bottom: -70px; }
+    .trust-panel h2 { font: 500 clamp(2.5rem, 4vw, 4.3rem)/1 "Playfair Display", serif; letter-spacing: -.04em; }
+    .trust-panel p { color: var(--muted); margin-top: 20px; }
+    .trust-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .trust-card { min-height: 190px; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.35); }
+    .trust-card span { display: block; color: var(--copper); font-size: 1.4rem; margin-bottom: 25px; }
+    .trust-card h3 { font: 500 1.18rem "Playfair Display", serif; }
+    .trust-card p { margin-top: 8px; color: var(--muted); font-size: .8rem; }
+
+    /* Contact */
+    .contact { padding: 120px 0; background: #d9ccb9; }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .contact h2 { font: 500 clamp(3rem, 5vw, 5.8rem)/.93 "Playfair Display", serif; letter-spacing: -.05em; margin: 20px 0 26px; }
+    .contact-copy { color: #4f5e57; max-width: 460px; }
+    .contact-details { margin-top: 38px; display: grid; gap: 12px; font-size: .84rem; }
+    .contact-details a { text-decoration: none; }
+    .contact-form { background: var(--white); padding: 42px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 17px; }
+    .form-group label { display: block; margin-bottom: 7px; font-size: .71rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #53615b; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; border: 0; border-bottom: 1px solid #b8beb9; border-radius: 0; background: transparent; padding: 11px 2px; color: var(--ink); outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--copper); box-shadow: 0 1px 0 var(--copper); }
+    .form-consent { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: .73rem; margin: 6px 0 20px; }
+    .form-consent input { width: 17px; height: 17px; accent-color: var(--forest); flex: none; margin-top: 2px; }
+    .form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .btn-submit { width: 100%; background: var(--forest); color: white; }
+    .btn-submit:hover { background: var(--forest-2); }
+    .btn-submit:disabled { opacity: .65; cursor: wait; }
+    .form-status { min-height: 20px; margin-top: 10px; text-align: center; color: var(--muted); font-size: .76rem; }
+
+    /* Footer */
+    .footer { background: #07100d; color: white; padding: 70px 0 30px; }
+    .footer-top { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; padding-bottom: 55px; }
+    .footer-title { max-width: 850px; font: 500 clamp(2.5rem, 5vw, 5.4rem)/.94 "Playfair Display", serif; letter-spacing: -.04em; }
+    .footer-links { display: grid; justify-content: end; gap: 10px; text-align: right; }
+    .footer-links a { color: rgba(255,255,255,.68); text-decoration: none; font-size: .82rem; }
+    .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,.13); display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; color: rgba(255,255,255,.45); font-size: .68rem; }
+    .float-wa { position: fixed; z-index: 90; right: 24px; bottom: 24px; width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: #c69b63; color: #102019; text-decoration: none; font-weight: 700; box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+
+    @media (max-width: 980px) {
+      .nav-links { position: fixed; inset: 84px 18px auto; background: rgba(11,23,20,.98); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 24px; display: none; flex-direction: column; align-items: stretch; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: grid; place-items: center; }
+      .hero-meta { display: none; }
+      .section-head, .thesis-grid, .trust-grid, .contact-grid { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-column: auto; }
+      .project-card:nth-child(2) { margin-top: 0; }
+      .project-card:last-child { grid-column: 1 / -1; min-height: 480px; }
+      .signals { grid-template-columns: 1fr 1fr; }
+      .signal:nth-child(3) { border-left: 0; }
+      .process-step { grid-template-columns: 60px .7fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 28px, 1240px); }
+      .brand-copy small { display: none; }
+      .brand-copy strong { font-size: .85rem; }
+      .hero { min-height: 820px; background-position: 62% center; }
+      .hero-content { padding: 130px 0 60px; }
+      .hero h1 { font-size: clamp(3.25rem, 16vw, 5.1rem); max-width: 98%; }
+      .hero-lead { max-width: 92%; }
+      .hero-actions .btn { width: 100%; }
+      .signals { grid-template-columns: 1fr; padding: 12px 0; }
+      .signal, .signal:first-child { padding: 18px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+      .signal:last-child { border-bottom: 0; }
+      .opportunities, .thesis, .process, .trust, .contact { padding: 82px 0; }
+      .section-head { gap: 24px; margin-bottom: 36px; }
+      .projects { grid-template-columns: 1fr; }
+      .project-card, .project-card:last-child { grid-column: auto; min-height: 560px; }
+      .process-step { grid-template-columns: 42px 1fr; gap: 18px; }
+      .process-step p { grid-column: 2; }
+      .trust-panel, .contact-form { padding: 30px 22px; }
+      .trust-cards, .form-row { grid-template-columns: 1fr; }
+      .footer-top, .footer-bottom { grid-template-columns: 1fr; }
+      .footer-links { justify-content: start; text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="Medellin Investment & Land Development SAS">
+        <span class="brand-mark">MI</span>
+        <span class="brand-copy">
+          <strong>Medellin Investment</strong>
+          <small>& Land Development SAS</small>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuButton" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="#oportunidades" data-i18n="nav-opportunities">Oportunidades</a>
+        <a href="#tesis" data-i18n="nav-location">Santa Elena</a>
+        <a href="#proceso" data-i18n="nav-process">Proceso</a>
+        <a href="#contacto" class="nav-cta" data-i18n="nav-contact">Conversemos</a>
+        <div class="lang" aria-label="Idioma">
+          <button type="button" id="langEs" class="active" onclick="setLanguage('es')">ES</button>
+          <button type="button" id="langEn" onclick="setLanguage('en')">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <span class="eyebrow" data-i18n="hero-eyebrow">Inversión inmobiliaria · Santa Elena</span>
+        <h1 data-i18n="hero-title">Capital con raíces.<br><em>Valor que trasciende.</em></h1>
+        <p class="hero-lead" data-i18n="hero-copy">Estructuramos oportunidades inmobiliarias y desarrollos de baja densidad en uno de los corredores naturales más estratégicos de Antioquia.</p>
+        <div class="hero-actions">
+          <a href="#oportunidades" class="btn btn-primary" data-i18n="hero-primary">Explorar oportunidades <span>↓</span></a>
+          <a href="#proceso" class="btn btn-ghost" data-i18n="hero-secondary">Cómo invertimos</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <small data-i18n="hero-meta-label">Territorio</small>
+        <strong data-i18n="hero-meta-value">Bosque altoandino · Antioquia</strong>
+      </div>
+    </section>
+
+    <section class="signal-bar" aria-label="Aspectos destacados">
+      <div class="container signals">
+        <div class="signal"><small data-i18n="signal-1-label">Enfoque</small><strong data-i18n="signal-1-value">Desarrollo responsable</strong></div>
+        <div class="signal"><small data-i18n="signal-2-label">Gestión</small><strong data-i18n="signal-2-value">De principio a fin</strong></div>
+        <div class="signal"><small data-i18n="signal-3-label">Estructura</small><strong data-i18n="signal-3-value">Legal y transparente</strong></div>
+        <div class="signal"><small data-i18n="signal-4-label">Atención</small><strong data-i18n="signal-4-value">Español · English</strong></div>
+      </div>
+    </section>
+
+    <section class="opportunities" id="oportunidades">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="opp-eyebrow">Portafolio selecto</span>
+            <h2 class="section-title" data-i18n="opp-title">Oportunidades con <em>visión de territorio.</em></h2>
+            <span class="demo-note" data-i18n="opp-demo">● Propuesta conceptual · Datos simulados para presentación</span>
+          </div>
+          <p class="section-copy" data-i18n="opp-copy">Tres escenarios de inversión diseñados para mostrar cómo se presentaría un portafolio real: información esencial, estado, métricas y acceso privado a cada oportunidad.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <img src="assets/hero-santa-elena.webp" alt="Residencia contemporánea conceptual integrada al bosque de Santa Elena">
+            <div class="project-top"><span class="pill pill-light" data-i18n="p1-status">Prelanzamiento</span><span class="project-number">01</span></div>
+            <div class="project-body">
+              <span class="project-location" data-i18n="p1-location">Santa Elena · Sector El Plan</span>
+              <h3 data-i18n="p1-title">Reserva Niebla</h3>
+              <p data-i18n="p1-copy">Colección conceptual de residencias privadas de baja densidad, arquitectura biofílica y conservación del paisaje.</p>
+              <div class="project-stats">
+                <span><strong>6</strong><small data-i18n="p1-stat1">Residencias</small></span>
+                <span><strong>3.200 m²</strong><small data-i18n="p1-stat2">Área lote</small></span>
+                <span><strong data-i18n="upon-request">A solicitud</strong><small data-i18n="p1-stat3">Inversión</small></span>
+              </div>
+              <button class="project-link project-inquiry" type="button" data-interest="Reserva Niebla" data-i18n="project-cta">Solicitar dossier privado</button>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=88" alt="Villa moderna conceptual rodeada de naturaleza" loading="lazy">
+            <div class="project-top"><span class="pill pill-light" data-i18n="p2-status">En estructuración</span><span class="project-number">02</span></div>
+            <div class="project-body">
+              <span class="project-location" data-i18n="p2-location">Santa Elena · Corredor Oriente</span>
+              <h3 data-i18n="p2-title">Bosque Alto Villas</h3>
+              <p data-i18n="p2-copy">Villas contemporáneas concebidas para segunda vivienda, estadías prolongadas y valorización patrimonial.</p>
+              <div class="project-stats">
+                <span><strong>8</strong><small data-i18n="p2-stat1">Villas</small></span>
+                <span><strong>210–260 m²</strong><small data-i18n="p2-stat2">Área construida</small></span>
+                <span><strong data-i18n="pre-feasibility">Prefact.</strong><small data-i18n="p2-stat3">Etapa</small></span>
+              </div>
+              <button class="project-link project-inquiry" type="button" data-interest="Bosque Alto Villas" data-i18n="project-cta">Solicitar dossier privado</button>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=88" alt="Refugio conceptual entre árboles y paisaje montañoso" loading="lazy">
+            <div class="project-top"><span class="pill pill-light" data-i18n="p3-status">Alianza estratégica</span><span class="project-number">03</span></div>
+            <div class="project-body">
+              <span class="project-location" data-i18n="p3-location">Santa Elena · Núcleo rural</span>
+              <h3 data-i18n="p3-title">Mirador Oriente</h3>
+              <p data-i18n="p3-copy">Modelo conceptual para propietarios de tierra que buscan estructurar, desarrollar y capturar mayor valor de su activo.</p>
+              <div class="project-stats">
+                <span><strong>5.800 m²</strong><small data-i18n="p3-stat1">Terreno</small></span>
+                <span><strong>SPV</strong><small data-i18n="p3-stat2">Modelo</small></span>
+                <span><strong data-i18n="due-diligence-short">D. diligence</strong><small data-i18n="p3-stat3">Estado</small></span>
+              </div>
+              <button class="project-link project-inquiry" type="button" data-interest="Mirador Oriente" data-i18n="project-cta">Solicitar dossier privado</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="thesis" id="tesis">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow" data-i18n="thesis-eyebrow">La tesis de inversión</span></div>
+          <p class="section-copy" data-i18n="thesis-copy">Santa Elena conecta la vida rural del altiplano con el dinamismo de Medellín y el Oriente antioqueño: naturaleza, accesibilidad y un carácter territorial difícil de replicar.</p>
+        </div>
+        <div class="thesis-grid">
+          <p class="thesis-quote" data-i18n="thesis-quote">Invertimos donde el paisaje, la conectividad y la escasez de suelo crean <em>valor a largo plazo.</em></p>
+          <div class="thesis-points">
+            <article class="thesis-point"><b>01</b><div><h3 data-i18n="t1-title">Conectividad estratégica</h3><p data-i18n="t1-copy">Un territorio articulado con Medellín, el aeropuerto internacional y el corredor del Oriente.</p></div></article>
+            <article class="thesis-point"><b>02</b><div><h3 data-i18n="t2-title">Demanda por naturaleza</h3><p data-i18n="t2-copy">Mayor interés por viviendas de baja densidad, bienestar, privacidad y conexión con el entorno.</p></div></article>
+            <article class="thesis-point"><b>03</b><div><h3 data-i18n="t3-title">Desarrollo selectivo</h3><p data-i18n="t3-copy">Proyectos que responden a la topografía, la normativa y la vocación ambiental del territorio.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="process-eyebrow">Cómo trabajamos</span>
+            <h2 class="section-title" data-i18n="process-title">Un proceso claro y comprobado. <em>Sin sorpresas.</em></h2>
+          </div>
+          <p class="section-copy" data-i18n="process-copy">Cada decisión se documenta antes de comprometer capital. Evaluamos el activo, definimos la estructura y gestionamos la ejecución con trazabilidad.</p>
+        </div>
+        <div class="process-list">
+          <article class="process-step"><span class="process-num">01</span><h3 data-i18n="s1-title">Conversación inicial</h3><p data-i18n="s1-copy">Entendemos el capital disponible, objetivos, horizonte de inversión y nivel de participación. Sin costo ni compromiso en esta etapa.</p></article>
+          <article class="process-step"><span class="process-num">02</span><h3 data-i18n="s2-title">Debida diligencia</h3><p data-i18n="s2-copy">Analizamos títulos, normativa, topografía, suelos, servicios, accesos y demanda para establecer la viabilidad real del proyecto.</p></article>
+          <article class="process-step"><span class="process-num">03</span><h3 data-i18n="s3-title">Estructuración</h3><p data-i18n="s3-copy">Definimos modelo legal, proyecciones financieras, presupuesto, cronograma y condiciones de participación formalmente documentadas.</p></article>
+          <article class="process-step"><span class="process-num">04</span><h3 data-i18n="s4-title">Desarrollo y gestión</h3><p data-i18n="s4-copy">Coordinamos diseño, licencias, contratación, obra, calidad, presupuesto y reportes periódicos bajo una sola dirección.</p></article>
+          <article class="process-step"><span class="process-num">05</span><h3 data-i18n="s5-title">Salida y distribución</h3><p data-i18n="s5-copy">Ejecutamos la estrategia comercial, formalizamos cierres y distribuimos resultados según las condiciones contractuales acordadas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-grid">
+        <div class="trust-panel">
+          <span class="eyebrow" data-i18n="trust-eyebrow">Nuestra forma de operar</span>
+          <h2 data-i18n="trust-title">Criterio local.<br>Estándar internacional.</h2>
+          <p data-i18n="trust-copy">Una inversión inmobiliaria necesita algo más que una buena ubicación: necesita información, estructura y ejecución disciplinada.</p>
+        </div>
+        <div class="trust-cards">
+          <article class="trust-card"><span>⌁</span><h3 data-i18n="trust1-title">Evaluación técnica</h3><p data-i18n="trust1-copy">El potencial del terreno se valida antes de diseñar o invertir.</p></article>
+          <article class="trust-card"><span>◇</span><h3 data-i18n="trust2-title">Protección legal</h3><p data-i18n="trust2-copy">Acuerdos claros y modelos de participación formalmente estructurados.</p></article>
+          <article class="trust-card"><span>↗</span><h3 data-i18n="trust3-title">Gestión integral</h3><p data-i18n="trust3-copy">Una dirección coordina cada etapa, desde el suelo hasta la salida.</p></article>
+          <article class="trust-card"><span>◎</span><h3 data-i18n="trust4-title">Seguimiento transparente</h3><p data-i18n="trust4-copy">Avances técnicos, financieros y comerciales reportados periódicamente.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow" data-i18n="contact-eyebrow">Contacto directo</span>
+          <h2 data-i18n="contact-title">Hablemos de su próxima inversión.</h2>
+          <p class="contact-copy" data-i18n="contact-copy">Cuéntenos si desea invertir capital, desarrollar un terreno o conocer oportunidades en Santa Elena. La primera conversación es confidencial y sin compromiso.</p>
+          <div class="contact-details">
+            <a href="tel:+573005551234">+57 300 555 1234</a>
+            <a href="mailto:info@landinvestments.com.co">info@landinvestments.com.co</a>
+            <span data-i18n="contact-place">Santa Elena · Antioquia · Colombia</span>
+          </div>
+        </div>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-honeypot" aria-hidden="true"><label for="companyWebsite">Website</label><input type="text" id="companyWebsite" tabindex="-1" autocomplete="off"></div>
+          <div class="form-row">
+            <div class="form-group"><label for="name" data-i18n="form-name">Nombre completo *</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+            <div class="form-group"><label for="phone" data-i18n="form-phone">Teléfono / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email" data-i18n="form-email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="form-group">
+              <label for="interest" data-i18n="form-interest">Perfil de interés *</label>
+              <select id="interest" name="interest" required>
+                <option value="" data-i18n="form-select">Seleccione una opción</option>
+                <option value="capital" data-i18n="form-capital">Invertir capital</option>
+                <option value="land" data-i18n="form-land">Desarrollar un terreno</option>
+                <option value="property" data-i18n="form-property">Comprar propiedad</option>
+                <option value="portfolio" data-i18n="form-portfolio">Conocer el portafolio</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label for="message" data-i18n="form-message">¿Qué tiene en mente?</label><textarea id="message" name="message" rows="3"></textarea></div>
+          <label class="form-consent" for="consent"><input id="consent" type="checkbox" required><span data-i18n="form-consent">Autorizo que Medellin Investment & Land Development SAS me contacte para atender esta solicitud. *</span></label>
+          <button class="btn btn-submit" type="submit" data-i18n="form-submit">Continuar por WhatsApp ↗</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <p class="footer-title" data-i18n="footer-title">Construimos valor donde otros solo ven tierra.</p>
+        <div class="footer-links"><a href="#oportunidades" data-i18n="nav-opportunities">Oportunidades</a><a href="#proceso" data-i18n="nav-process">Proceso</a><a href="#contacto" data-i18n="nav-contact">Conversemos</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Medellin Investment & Land Development SAS</span>
+        <p data-i18n="legal">Esta presentación no constituye una oferta pública ni garantiza rentabilidades. Las oportunidades y cifras mostradas son conceptuales y están sujetas a evaluación técnica, legal y financiera.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/573005551234?text=Hola%2C%20quiero%20conocer%20las%20oportunidades%20en%20Santa%20Elena" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
+
+  <script>
+    const translations = {
+      es: {
+        'nav-opportunities':'Oportunidades','nav-location':'Santa Elena','nav-process':'Proceso','nav-contact':'Conversemos',
+        'hero-eyebrow':'Inversión inmobiliaria · Santa Elena','hero-title':'Capital con raíces.<br><em>Valor que trasciende.</em>','hero-copy':'Estructuramos oportunidades inmobiliarias y desarrollos de baja densidad en uno de los corredores naturales más estratégicos de Antioquia.','hero-primary':'Explorar oportunidades <span>↓</span>','hero-secondary':'Cómo invertimos','hero-meta-label':'Territorio','hero-meta-value':'Bosque altoandino · Antioquia',
+        'signal-1-label':'Enfoque','signal-1-value':'Desarrollo responsable','signal-2-label':'Gestión','signal-2-value':'De principio a fin','signal-3-label':'Estructura','signal-3-value':'Legal y transparente','signal-4-label':'Atención','signal-4-value':'Español · English',
+        'opp-eyebrow':'Portafolio selecto','opp-title':'Oportunidades con <em>visión de territorio.</em>','opp-demo':'● Propuesta conceptual · Datos simulados para presentación','opp-copy':'Tres escenarios de inversión diseñados para mostrar cómo se presentaría un portafolio real: información esencial, estado, métricas y acceso privado a cada oportunidad.',
+        'p1-status':'Prelanzamiento','p1-location':'Santa Elena · Sector El Plan','p1-title':'Reserva Niebla','p1-copy':'Colección conceptual de residencias privadas de baja densidad, arquitectura biofílica y conservación del paisaje.','p1-stat1':'Residencias','p1-stat2':'Área lote','p1-stat3':'Inversión',
+        'p2-status':'En estructuración','p2-location':'Santa Elena · Corredor Oriente','p2-title':'Bosque Alto Villas','p2-copy':'Villas contemporáneas concebidas para segunda vivienda, estadías prolongadas y valorización patrimonial.','p2-stat1':'Villas','p2-stat2':'Área construida','p2-stat3':'Etapa',
+        'p3-status':'Alianza estratégica','p3-location':'Santa Elena · Núcleo rural','p3-title':'Mirador Oriente','p3-copy':'Modelo conceptual para propietarios de tierra que buscan estructurar, desarrollar y capturar mayor valor de su activo.','p3-stat1':'Terreno','p3-stat2':'Modelo','p3-stat3':'Estado',
+        'upon-request':'A solicitud','pre-feasibility':'Prefact.','due-diligence-short':'D. diligence','project-cta':'Solicitar dossier privado',
+        'thesis-eyebrow':'La tesis de inversión','thesis-copy':'Santa Elena conecta la vida rural del altiplano con el dinamismo de Medellín y el Oriente antioqueño: naturaleza, accesibilidad y un carácter territorial difícil de replicar.','thesis-quote':'Invertimos donde el paisaje, la conectividad y la escasez de suelo crean <em>valor a largo plazo.</em>','t1-title':'Conectividad estratégica','t1-copy':'Un territorio articulado con Medellín, el aeropuerto internacional y el corredor del Oriente.','t2-title':'Demanda por naturaleza','t2-copy':'Mayor interés por viviendas de baja densidad, bienestar, privacidad y conexión con el entorno.','t3-title':'Desarrollo selectivo','t3-copy':'Proyectos que responden a la topografía, la normativa y la vocación ambiental del territorio.',
+        'process-eyebrow':'Cómo trabajamos','process-title':'Un proceso claro y comprobado. <em>Sin sorpresas.</em>','process-copy':'Cada decisión se documenta antes de comprometer capital. Evaluamos el activo, definimos la estructura y gestionamos la ejecución con trazabilidad.','s1-title':'Conversación inicial','s1-copy':'Entendemos el capital disponible, objetivos, horizonte de inversión y nivel de participación. Sin costo ni compromiso en esta etapa.','s2-title':'Debida diligencia','s2-copy':'Analizamos títulos, normativa, topografía, suelos, servicios, accesos y demanda para establecer la viabilidad real del proyecto.','s3-title':'Estructuración','s3-copy':'Definimos modelo legal, proyecciones financieras, presupuesto, cronograma y condiciones de participación formalmente documentadas.','s4-title':'Desarrollo y gestión','s4-copy':'Coordinamos diseño, licencias, contratación, obra, calidad, presupuesto y reportes periódicos bajo una sola dirección.','s5-title':'Salida y distribución','s5-copy':'Ejecutamos la estrategia comercial, formalizamos cierres y distribuimos resultados según las condiciones contractuales acordadas.',
+        'trust-eyebrow':'Nuestra forma de operar','trust-title':'Criterio local.<br>Estándar internacional.','trust-copy':'Una inversión inmobiliaria necesita algo más que una buena ubicación: necesita información, estructura y ejecución disciplinada.','trust1-title':'Evaluación técnica','trust1-copy':'El potencial del terreno se valida antes de diseñar o invertir.','trust2-title':'Protección legal','trust2-copy':'Acuerdos claros y modelos de participación formalmente estructurados.','trust3-title':'Gestión integral','trust3-copy':'Una dirección coordina cada etapa, desde el suelo hasta la salida.','trust4-title':'Seguimiento transparente','trust4-copy':'Avances técnicos, financieros y comerciales reportados periódicamente.',
+        'contact-eyebrow':'Contacto directo','contact-title':'Hablemos de su próxima inversión.','contact-copy':'Cuéntenos si desea invertir capital, desarrollar un terreno o conocer oportunidades en Santa Elena. La primera conversación es confidencial y sin compromiso.','contact-place':'Santa Elena · Antioquia · Colombia','form-name':'Nombre completo *','form-phone':'Teléfono / WhatsApp *','form-email':'Correo electrónico *','form-interest':'Perfil de interés *','form-select':'Seleccione una opción','form-capital':'Invertir capital','form-land':'Desarrollar un terreno','form-property':'Comprar propiedad','form-portfolio':'Conocer el portafolio','form-message':'¿Qué tiene en mente?','form-consent':'Autorizo que Medellin Investment & Land Development SAS me contacte para atender esta solicitud. *','form-submit':'Continuar por WhatsApp ↗','form-sending':'Abriendo WhatsApp…',
+        'footer-title':'Construimos valor donde otros solo ven tierra.','legal':'Esta presentación no constituye una oferta pública ni garantiza rentabilidades. Las oportunidades y cifras mostradas son conceptuales y están sujetas a evaluación técnica, legal y financiera.'
+      },
+      en: {
+        'nav-opportunities':'Opportunities','nav-location':'Santa Elena','nav-process':'Process','nav-contact':'Let’s talk',
+        'hero-eyebrow':'Real estate investment · Santa Elena','hero-title':'Capital with roots.<br><em>Value that endures.</em>','hero-copy':'We structure real estate opportunities and low-density developments in one of Antioquia’s most strategic natural corridors.','hero-primary':'Explore opportunities <span>↓</span>','hero-secondary':'How we invest','hero-meta-label':'Territory','hero-meta-value':'Andean cloud forest · Antioquia',
+        'signal-1-label':'Focus','signal-1-value':'Responsible development','signal-2-label':'Management','signal-2-value':'End to end','signal-3-label':'Structure','signal-3-value':'Legal and transparent','signal-4-label':'Service','signal-4-value':'Español · English',
+        'opp-eyebrow':'Selected portfolio','opp-title':'Opportunities with a <em>territorial vision.</em>','opp-demo':'● Concept proposal · Simulated presentation data','opp-copy':'Three investment scenarios designed to show how a real portfolio would be presented: essential information, status, metrics and private access to every opportunity.',
+        'p1-status':'Pre-launch','p1-location':'Santa Elena · El Plan sector','p1-title':'Reserva Niebla','p1-copy':'A conceptual collection of low-density private residences, biophilic architecture and landscape conservation.','p1-stat1':'Residences','p1-stat2':'Land area','p1-stat3':'Investment',
+        'p2-status':'Structuring','p2-location':'Santa Elena · Eastern corridor','p2-title':'Bosque Alto Villas','p2-copy':'Contemporary villas conceived for second homes, extended stays and long-term appreciation.','p2-stat1':'Villas','p2-stat2':'Built area','p2-stat3':'Stage',
+        'p3-status':'Strategic alliance','p3-location':'Santa Elena · Rural core','p3-title':'Mirador Oriente','p3-copy':'A conceptual model for landowners seeking to structure, develop and capture greater value from their asset.','p3-stat1':'Land','p3-stat2':'Model','p3-stat3':'Status',
+        'upon-request':'On request','pre-feasibility':'Pre-feas.','due-diligence-short':'Due diligence','project-cta':'Request private dossier',
+        'thesis-eyebrow':'The investment thesis','thesis-copy':'Santa Elena connects rural highland living with the dynamism of Medellín and Eastern Antioquia: nature, accessibility and a territorial character that is hard to replicate.','thesis-quote':'We invest where landscape, connectivity and land scarcity create <em>long-term value.</em>','t1-title':'Strategic connectivity','t1-copy':'A territory connected to Medellín, the international airport and the Eastern corridor.','t2-title':'Nature-led demand','t2-copy':'Growing interest in low-density living, wellness, privacy and a deeper connection with nature.','t3-title':'Selective development','t3-copy':'Projects that respond to topography, regulations and the territory’s environmental vocation.',
+        'process-eyebrow':'How we work','process-title':'A clear, proven process. <em>No surprises.</em>','process-copy':'Every decision is documented before capital is committed. We assess the asset, define the structure and manage execution with full traceability.','s1-title':'Initial conversation','s1-copy':'We understand available capital, goals, investment horizon and desired participation. No cost or commitment at this stage.','s2-title':'Due diligence','s2-copy':'We review titles, regulations, topography, soils, utilities, access and demand to determine the project’s real feasibility.','s3-title':'Deal structuring','s3-copy':'We define the legal model, financial projections, budget, timeline and participation terms in formal documentation.','s4-title':'Development & management','s4-copy':'We coordinate design, permits, procurement, construction, quality, budget and periodic reporting under one direction.','s5-title':'Exit & distribution','s5-copy':'We execute the commercial strategy, formalize closings and distribute results according to the agreed contractual terms.',
+        'trust-eyebrow':'How we operate','trust-title':'Local judgment.<br>International standard.','trust-copy':'Real estate investment needs more than a good location: it needs information, structure and disciplined execution.','trust1-title':'Technical assessment','trust1-copy':'The land’s potential is validated before design or investment.','trust2-title':'Legal protection','trust2-copy':'Clear agreements and formally structured participation models.','trust3-title':'Full management','trust3-copy':'One direction coordinates every stage, from land to exit.','trust4-title':'Transparent tracking','trust4-copy':'Technical, financial and commercial progress reported periodically.',
+        'contact-eyebrow':'Direct contact','contact-title':'Let’s discuss your next investment.','contact-copy':'Tell us whether you want to invest capital, develop land or explore opportunities in Santa Elena. The first conversation is confidential and without commitment.','contact-place':'Santa Elena · Antioquia · Colombia','form-name':'Full name *','form-phone':'Phone / WhatsApp *','form-email':'Email *','form-interest':'Interest profile *','form-select':'Select an option','form-capital':'Invest capital','form-land':'Develop land','form-property':'Buy property','form-portfolio':'Explore the portfolio','form-message':'What do you have in mind?','form-consent':'I authorize Medellin Investment & Land Development SAS to contact me regarding this request. *','form-submit':'Continue on WhatsApp ↗','form-sending':'Opening WhatsApp…',
+        'footer-title':'We build value where others only see land.','legal':'This presentation does not constitute a public offering or guarantee returns. The opportunities and figures shown are conceptual and subject to technical, legal and financial evaluation.'
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const value = translations[lang][el.dataset.i18n];
+        if (value !== undefined) el.innerHTML = value;
+      });
+      document.getElementById('langEs').classList.toggle('active', lang === 'es');
+      document.getElementById('langEn').classList.toggle('active', lang === 'en');
+      localStorage.setItem('lang', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(localStorage.getItem('lang') || 'es');
+
+      const nav = document.getElementById('nav');
+      const menuButton = document.getElementById('menuButton');
+      const navLinks = document.getElementById('navLinks');
+      const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
+
+      menuButton.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }));
+
+      document.querySelectorAll('.project-inquiry').forEach(button => button.addEventListener('click', () => {
+        document.getElementById('interest').value = 'portfolio';
+        document.getElementById('message').value = `${button.dataset.interest} — dossier privado`;
+        document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      }));
+
+      const form = document.getElementById('contactForm');
+      const submitButton = form.querySelector('.btn-submit');
+      const status = document.getElementById('formStatus');
+      const whatsappNumber = '573005551234';
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (document.getElementById('companyWebsite').value) return;
+
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'es';
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const select = document.getElementById('interest');
+        const interest = select.options[select.selectedIndex].text;
+        const message = document.getElementById('message').value.trim();
+        const lines = lang === 'en'
+          ? ['Hello Medellin Investment & Land Development. I would like more information.','',`Name: ${name}`,`Email: ${email}`,`Phone: ${phone}`,`Interest: ${interest}`,`Message: ${message || 'No additional message'}`]
+          : ['Hola Medellin Investment & Land Development. Quiero recibir más información.','',`Nombre: ${name}`,`Correo: ${email}`,`Teléfono: ${phone}`,`Interés: ${interest}`,`Mensaje: ${message || 'Sin mensaje adicional'}`];
+
+        submitButton.disabled = true;
+        submitButton.textContent = translations[lang]['form-sending'];
+        status.textContent = translations[lang]['form-sending'];
+        window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+      });
+    });
+  </script>
+</body>
+</html>
